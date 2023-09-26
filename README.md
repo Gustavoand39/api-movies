@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# Movies API
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Descripción
 
-## Available Scripts
+Es un sitio web que permite a los usuario ver las películas y series que están en cartelera, las más populares y las que se encuentran en tendencia, así como detalles extra de cada película/serie. Además, permite buscar películas y series por su nombre.
 
-In the project directory, you can run:
+El propósito de este proyecto es poner en práctica los conocimientos adquiridos de React y aprender a consumir una API externa.
 
-### `npm start`
+## Desarrollo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Para el desarrollo de este proyecto se utilizó React y la API de [The Movie Database](https://www.themoviedb.org/), la cual permite obtener información de películas y series.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Para poder consumir la API se utilizó el Hook `useEffect`, el cual permite ejecutar código cuando se monta el componente. Además, se utilizó el Hook `useState` para poder almacenar el estado de los componentes.
 
-### `npm test`
+## API Key
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Para poder consumir la API es necesario tener una API Key. Para obtenerla, es necesario crear una cuenta en [The Movie Database](https://www.themoviedb.org/). Una vez creada la cuenta, se debe ir a la sección de configuración y en la pestaña de API se puede obtener la API Key.
 
-### `npm run build`
+Una vez obtenida la API Key, se debe crear un archivo llamado `.env` en la raíz del proyecto y dentro de este archivo se debe agregar la siguiente línea:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+REACT_APP_API_KEY=API_KEY
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Donde `API_KEY` es la API Key obtenida anteriormente.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Instalación y ejecución
 
-### `npm run eject`
+Para poder ejecutar este proyecto es necesario tener instalado [Node.js](https://nodejs.org/es/).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Clonar el repositorio
+2. Instalar las dependencias con el comando `npm install`
+3. Ejecutar el comando `npm start` para iniciar el servidor
+4. Se abrirá una ventana en el navegador con la aplicación en funcionamiento.
+5. Para detener el servidor, presionar `Ctrl + C` en la terminal, posteriormente, ingresar `s` y presionar `Enter`.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Atribuciones
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+El proyecto fue realizado gracias a la API de [The Movie Database](https://www.themoviedb.org/). La información de las películas y series fue obtenida de esta API, la cual es de uso libre. Este proyecto fue realizado con fines educativos y no comerciales.

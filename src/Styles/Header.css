@@ -1,0 +1,98 @@
+.header {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.2rem 2rem;
+}
+
+.sections {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.header-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  display: flex; /* Muestra los elementos del menú en línea */
+}
+
+.menu-item {
+  position: relative;
+  cursor: pointer;
+  margin-right: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.menu-item:hover {
+  color: #ffd700;
+}
+
+.submenu {
+  width: 200px;
+  display: none;
+  position: absolute;
+  list-style: none;
+  background-color: #333;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.menu-item:hover .submenu {
+  display: block;
+}
+
+.submenu-item {
+  margin: 0;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+}
+
+.submenu-item:hover {
+  color: #ffd700;
+}
+
+/* Estilos para la barra de búsqueda */
+.navbar {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.input-navbar {
+  padding: 10px 15px;
+  margin-right: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 3px;
+}
+
+.input-navbar:focus {
+  outline: none;
+}
+
+.btn-navbar {
+  padding: 10px 15px;
+  background-color: #ffd700;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.btn-navbar:hover {
+  background-color: #ffcc00;
+}

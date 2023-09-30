@@ -4,31 +4,74 @@ import "../Styles/Header.css";
 function Header() {
   return (
     <header className="header">
-      <div className="sections">
-        <h1 className="header-title">MOVIE APP</h1>
-        <ul className="menu">
-          <li className="menu-item">
-            Películas
-            <ul className="submenu">
-              <li className="submenu-item">Más Populares</li>
-              <li className="submenu-item">Recientes</li>
-              <li className="submenu-item">Más Vistas</li>
-            </ul>
-          </li>
-          <li className="menu-item">
-            Series
-            <ul className="submenu">
-              <li className="submenu-item">Más Populares</li>
-              <li className="submenu-item">Recientes</li>
-              <li className="submenu-item">Más Vistas</li>
-            </ul>
-          </li>
-        </ul>
+      <div className="header-logo">
+        <h1 className="header-logo-title">MOVIE APP</h1>
       </div>
-      <div className="navbar">
-        <input className="input-navbar" type="text" placeholder="Buscar" />
-        <button className="btn-navbar">Buscar</button>
-      </div>
+
+      <nav className="header-nav">
+        <input type="checkbox" className="nav-check" id="nav-check" />
+        <label htmlFor="nav-check" className="nav-toggle">
+          <i className="fa-solid fa-bars"></i>
+        </label>
+
+        <div className="nav-search-container">
+          <ul className="nav-list">
+            <li className="nav-item">
+              Películas
+              <ul className="nav-sublist">
+                <li className="nav-subitem">
+                  <a className="nav-sublink" href="#_">
+                    En cartelera
+                  </a>
+                </li>
+                <li className="nav-subitem">
+                  <a className="nav-sublink" href="#_">
+                    Próximamente
+                  </a>
+                </li>
+                <li className="nav-subitem">
+                  <a className="nav-sublink" href="#_">
+                    Popular
+                  </a>
+                </li>
+                <li className="nav-subitem">
+                  <a className="nav-sublink" href="#_">
+                    Mejor valoradas
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li className="nav-item">
+              <span className="nav-link">
+                Series
+                <ul className="nav-sublist">
+                  <li className="nav-subitem">
+                    <a className="nav-sublink" href="#_">
+                      Populares
+                    </a>
+                  </li>
+                  <li className="nav-subitem">
+                    <a className="nav-sublink" href="#_">
+                      Mejor valoradas
+                    </a>
+                  </li>
+                </ul>
+              </span>
+            </li>
+          </ul>
+
+          <div className="nav-search">
+            <input
+              type="text"
+              className="nav-search-input"
+              placeholder="Buscar..."
+            />
+            <button className="nav-search-button">
+              <i className="fa-solid fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </nav>
     </header>
   );
 }

@@ -2,6 +2,7 @@ import "./App.css";
 import React, { useEffect, useState } from "react";
 import Header from "./Components/Header";
 import MovieCard from "./Components/MovieCard";
+import Footer from "./Components/Footer";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -12,17 +13,15 @@ function App() {
 
     if (cachedMovies) {
       // Si las películas están en caché, las cargamos desde la caché
-      console.log("Películas desde caché");
       const parsedMovies = JSON.parse(cachedMovies);
       setMovies(parsedMovies);
     } else {
       // Si no están en caché, hacemos la solicitud a la API
-      console.log("Películas desde la API");
       const loadMovies = async () => {
         try {
           const apiKey = process.env.REACT_APP_API_KEY;
           const response = await fetch(
-            `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=es-MX`
+            `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=es-MX`
           );
 
           if (response.status === 401) {
@@ -50,12 +49,15 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <h2 className="section-title">Películas Populares</h2>
-      <div className="movies-container">
+
+      <h2 className="section-title">En cartelera</h2>
+      <div className="movies-container" id="moviesContainer">
         {movies.map((movie) => {
           return <MovieCard key={movie.id} movie={movie} />;
         })}
       </div>
+
+      <Footer />
     </div>
   );
 }

@@ -13,7 +13,8 @@ function MovieCard({ movie }) {
   } else if (movie.vote_average >= 5) {
     progressBarColor = "#FFC107"; // Amarillo
   } else {
-    progressBarColor = "#FF5722"; // Rojo
+    // Rojo sangre
+    progressBarColor = "#E53935";
   }
 
   // Anchura y color de la barra de progreso

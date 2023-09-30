@@ -17,7 +17,7 @@
 /* Estilos a la imagen */
 .movie-image {
   width: 100%;
-  height: 70%;
+  min-height: 300px;
   object-fit: cover;
   border-radius: 20px 20px 0 0;
 }
@@ -25,7 +25,7 @@
 /* Estilos al cuerpo de la tarjeta */
 .movie-body {
   width: 100%;
-  height: 30%;
+  height: 100%;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -43,14 +43,14 @@
 }
 
 .movie-year {
-  flex-basis: 40%;
+  flex-basis: 50%;
   font-size: 1.2rem;
   color: #595959;
 }
 
 /* Estilos a la valoración */
 .movie-rating {
-  flex-basis: 60%;
+  flex-basis: 50%;
   display: flex;
   gap: 0.5rem;
   align-items: center;
@@ -66,7 +66,6 @@
 }
 
 .progress-bar {
-  width: 100%;
   height: 100%;
 }
 
@@ -74,4 +73,10 @@
   flex-basis: 20%;
   font-size: 1.2rem;
   color: #595959;
+}
+
+@media screen and (max-width: 768px) {
+  .movie-image {
+    height: 300px;
+  }
 }

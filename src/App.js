@@ -1,61 +1,88 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
 import Header from "./Components/Header";
-import MovieCard from "./Components/MovieCard";
+import MediaCard from "./Components/MediaCard";
+import PageNav from "./Components/PageNav";
 import Footer from "./Components/Footer";
+import { fetchData } from "./Components/apiCalls";
 
 function App() {
-  const [movies, setMovies] = useState([]);
+  const [mediaData, setMediaData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const [currentSection, setCurrentSection] = useState("movie");
+  const [currentCategory, setCurrentCategory] = useState("now_playing");
 
+  // Se ejecuta la petición a la API cuando se monta el componente
   useEffect(() => {
-    // Comprobamos si ya tenemos las películas en caché de la sesión actual
-    const cachedMovies = sessionStorage.getItem("cachedMovies");
+    const loadMovies = async () => {
+      try {
+        // Se obtiene la información en formato JSON
+        const data = await fetchData(
+          currentSection,
+          currentCategory,
+          currentPage
+        );
+        // Se actualizan los estados
+        console.log(data);
+        setTotalPages(data.total_pages);
+        setMediaData(data.results);
+      } catch (error) {
+        alert(error);
+      }
+    };
 
-    if (cachedMovies) {
-      // Si las películas están en caché, las cargamos desde la caché
-      const parsedMovies = JSON.parse(cachedMovies);
-      setMovies(parsedMovies);
-    } else {
-      // Si no están en caché, hacemos la solicitud a la API
-      const loadMovies = async () => {
-        try {
-          const apiKey = process.env.REACT_APP_API_KEY;
-          const response = await fetch(
-            `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=es-MX`
-          );
+    loadMovies();
+  }, [currentPage, currentSection, currentCategory]);
 
-          if (response.status === 401) {
-            throw new Error("Petición no autorizada");
-          } else if (response.status === 404) {
-            throw new Error("No se encontró la información solicitada");
-          } else if (response.status !== 200) {
-            throw new Error("Ocurrió un error inesperado");
-          }
+  // Función que actualiza el estado de la página actual
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
 
-          const data = await response.json();
-          setMovies(data.results);
+  // Función para actualizar el estado de mediaData
+  const handleMediaData = (newMediaData) => {
+    setMediaData(newMediaData);
+  };
 
-          // Almacenamos las películas en caché de la sesión actual
-          sessionStorage.setItem("cachedMovies", JSON.stringify(data.results));
-        } catch (error) {
-          alert(error);
-        }
-      };
+  // Función para actualizar el estado de la sección actual
+  const handleSectionChange = (newSection) => {
+    setCurrentSection(newSection);
+  };
 
-      loadMovies();
-    }
-  }, []);
+  // Función para actualizar el estado de la categoría actual
+  const handleCategoryChange = (newCategory) => {
+    setCurrentCategory(newCategory);
+  };
 
   return (
     <div className="App">
-      <Header />
+      <Header
+        handlePageChange={handlePageChange}
+        handleMediaData={handleMediaData}
+        handleSectionChange={handleSectionChange}
+        handleCategoryChange={handleCategoryChange}
+      />
 
-      <h2 className="section-title">En cartelera</h2>
-      <div className="movies-container" id="moviesContainer">
-        {movies.map((movie) => {
-          return <MovieCard key={movie.id} movie={movie} />;
+      <h2 className="section-title">
+        {currentSection === "movie" ? "Películas" : "Programas de TV"}
+        {currentCategory === "now_playing" && " en cines"}
+        {currentCategory === "popular" && " populares"}
+        {currentCategory === "top_rated" && " con mejores críticas"}
+        {currentCategory === "upcoming" && " a estrenarse"}
+        {currentCategory === "on_the_air" && " en emisión"}
+      </h2>
+      <div className="mediaData-container">
+        {mediaData.map((data) => {
+          return <MediaCard key={data.id} data={data} />;
         })}
       </div>
+
+      <PageNav
+        onPageChange={handlePageChange}
+        currentPage={currentPage}
+        totalPages={totalPages}
+      />
 
       <Footer />
     </div>

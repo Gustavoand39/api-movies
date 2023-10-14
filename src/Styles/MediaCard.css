@@ -1,5 +1,5 @@
 /* Estilos a la tarjeta */
-.movie-card {
+.media-card {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -7,7 +7,7 @@
   border-radius: 20px;
 }
 
-.movie-card:hover {
+.media-card:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   scale: 1.02;
@@ -15,41 +15,42 @@
 }
 
 /* Estilos a la imagen */
-.movie-image {
+.media-image {
   width: 100%;
-  min-height: 300px;
+  height: 350px;
   object-fit: cover;
   border-radius: 20px 20px 0 0;
 }
 
 /* Estilos al cuerpo de la tarjeta */
-.movie-body {
+.media-body {
   width: 100%;
-  height: 100%;
+  height: 150px;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.movie-title {
+.media-title {
   font-size: 1.2rem;
   font-weight: 700;
+  overflow: hidden;
 }
 
-.movie-details {
+.media-details {
   display: flex;
   justify-content: space-between;
 }
 
-.movie-year {
+.media-year {
   flex-basis: 50%;
   font-size: 1.2rem;
   color: #595959;
 }
 
 /* Estilos a la valoración */
-.movie-rating {
+.media-rating {
   flex-basis: 50%;
   display: flex;
   gap: 0.5rem;
@@ -69,14 +70,18 @@
   height: 100%;
 }
 
-.movie-vote {
+.media-vote {
   flex-basis: 20%;
   font-size: 1.2rem;
   color: #595959;
 }
 
 @media screen and (max-width: 768px) {
-  .movie-image {
-    height: 300px;
+  .media-image {
+    height: 350px;
+  }
+
+  .media-body {
+    height: 150px;
   }
 }

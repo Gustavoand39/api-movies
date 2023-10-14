@@ -16,7 +16,7 @@
   margin-bottom: 1rem;
 }
 
-.movies-container {
+.mediaData-container {
   width: 100%;
   padding: 1rem 2rem 2rem 2rem;
   display: grid;
@@ -26,21 +26,21 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .movies-container {
+  .mediaData-container {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 /* Tableta */
 @media screen and (max-width: 768px) {
-  .movies-container {
+  .mediaData-container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 /* Mobile */
 @media screen and (max-width: 425px) {
-  .movies-container {
+  .mediaData-container {
     grid-template-columns: 1fr;
   }
 }

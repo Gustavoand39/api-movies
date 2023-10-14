@@ -1,17 +1,17 @@
 import React from "react";
 import "../Styles/Footer.css";
 
-function Footer() {
+const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-section">
         <h3 className="footer-title">Movie App</h3>
         <p className="footer-text">
-          Este sitio web fue desarrollado con fines educativos y de
-          aprendizaje.
+          Este sitio web fue desarrollado con fines educativos y de aprendizaje.
         </p>
         <p className="footer-text">
-          Este producto no está respaldado ni certificado por TMDB.
+          Utiliza la API de TMDB pero no está respaldado ni
+          certificado por TMDB.
         </p>
       </div>
 
@@ -69,21 +69,15 @@ function Footer() {
         </a>
         <a
           className="footer-link"
-          href="mailto:hola@hola.com"
+          href="mailto:gustavoand39@gmail.com"
           target="_blank"
           rel="noreferrer"
         >
           <span className="footer-link-text">Correo Electrónico</span>
         </a>
       </div>
-
-      <div className="footer-section">
-        <a href="#a">
-          <button className="footer-button">Volver al inicio</button>
-        </a>
-      </div>
     </footer>
   );
-}
+};
 
 export default Footer;

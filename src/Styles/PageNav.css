@@ -1,0 +1,55 @@
+.page-nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0rem;
+}
+
+.page-nav-btn {
+  padding: 0.5rem 1rem;
+  background: none;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.page-nav-btn:hover {
+  background-color: #e5e5e5;
+}
+
+.current-page,
+.page-number {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1rem;
+  text-align: center;
+  line-height: 2.5rem;
+  background: none;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+.current-page {
+  background-color: #ffd700;
+}
+
+.page-number:hover {
+  background-color: #e5e5e5;
+}
+
+@media screen and (max-width: 425px) {
+  .page-number {
+    display: none;
+  }
+
+  
+}

@@ -1,11 +1,11 @@
 import React from "react";
 import "../Styles/MediaCard.css";
 
-const MediaCard = ({ data }) => {
+const MediaCard = ({ data, onCardClick }) => {
   // Obtener el año de la fecha de lanzamiento
   const release_year = new Date(
     data.release_date || data.first_air_date
-  ).getFullYear();
+  ).getFullYear() || "----";
   // Calcular el porcentaje de llenado de la barra de progreso
   const ratingPercentage = (data.vote_average / 10) * 100;
   let progressBarColor = "";
@@ -15,8 +15,7 @@ const MediaCard = ({ data }) => {
   } else if (data.vote_average >= 5) {
     progressBarColor = "#FFC107"; // Amarillo
   } else {
-    // Rojo sangre
-    progressBarColor = "#E53935";
+    progressBarColor = "#E53935"; // Rojo
   }
 
   // Anchura y color de la barra de progreso
@@ -25,8 +24,13 @@ const MediaCard = ({ data }) => {
     backgroundColor: progressBarColor,
   };
 
+  // Función que se ejecuta al hacer click en la tarjeta
+  const handleClick = () => {
+    onCardClick(data);
+  };
+
   return (
-    <div className="media-card">
+    <div className="media-card" onClick={handleClick}>
       <img
         className="media-image"
         src={`https://image.tmdb.org/t/p/w500${
@@ -42,7 +46,7 @@ const MediaCard = ({ data }) => {
             <div className="progress-bar-container">
               <div className="progress-bar" style={progressBarStyle}></div>
             </div>
-            <p className="media-vote">{data.vote_average}</p>
+            <p className="media-vote">{data.vote_average.toFixed(1)}</p>
           </div>
         </div>
       </div>

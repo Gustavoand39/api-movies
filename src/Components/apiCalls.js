@@ -2,28 +2,33 @@
 const apiKey = process.env.REACT_APP_API_KEY;
 const apiUrl = "https://api.themoviedb.org/3";
 
-// Función para manejar los errores
-const errorHandler = (response) => {
-  if (response.status === 401) {
-    throw new Error("Petición no autorizada");
-  } else if (response.status === 404) {
-    throw new Error("No se encontró la información solicitada");
-  } else if (response.status !== 200) {
-    throw new Error("Ocurrió un error inesperado");
+// Función para obtener los datos de las películas o series
+export const fetchData = async (section, category, page) => {
+  const response = await fetch(
+    `${apiUrl}/${section}/${category}?api_key=${apiKey}&language=es-MX&page=${page}`
+  );
+
+  if (!response.ok) {
+    throw new Error("Ocurrió un error al obtener los datos.");
   }
+
+  return response.json();
 };
 
-// Función genérica para obtener las películas
-export const fetchData = async (section = "movie", category = "now_playing", page = 1) => {
-  try {
-    const response = await fetch(
-      `${apiUrl}/${section}/${category}?api_key=${apiKey}&language=es-MX&page=${page}`
-    );
+// Función para obtener los nombres de los géneros
+export const getGenresNames = async (section) => {
+  const response = await fetch(
+    `${apiUrl}/genre/${section}/list?api_key=${apiKey}&language=es-MX`
+  );
 
-    errorHandler(response);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.log(error);
+  if (!response.ok) {
+    throw new Error("Ocurrió un error al obtener los datos de los géneros.");
   }
+
+  const data = await response.json();
+  const genreNames = {};
+  data.genres.forEach((genre) => {
+    genreNames[genre.id] = genre.name;
+  });
+  return genreNames;
 };
